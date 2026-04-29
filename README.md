@@ -1,4 +1,7 @@
 # ⚡ CiberMind - Cyber Training Platform
+## 📺 Demostración del Proyecto
+https://github.com/tu-usuario/tu-repo/raw/main/1000353152(1).mp4
+
 
 Plataforma interactiva de entrenamiento en ciberseguridad desarrollada para gamificar el aprendizaje de conceptos técnicos.
 
@@ -20,3 +23,4 @@ Plataforma interactiva de entrenamiento en ciberseguridad desarrollada para gami
 /ranking.php: Lógica de competencia global.
 /snake.php: Juego interactivo de recolección de datos.
 cibermind.sql: Estructura completa de la base de datos.
+Agregado video de demostracion
