@@ -1,6 +1,6 @@
 # ⚡ CiberMind - Cyber Training Platform
 ## 📺 Demostración del Proyecto
-https://github.com/tu-usuario/tu-repo/raw/main/1000353152(1).mp4
+https://github.com/tu-usuario/tu-repo/raw/main/1000353152.mp4
 
 
 Plataforma interactiva de entrenamiento en ciberseguridad desarrollada para gamificar el aprendizaje de conceptos técnicos.
