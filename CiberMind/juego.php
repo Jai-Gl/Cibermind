@@ -208,8 +208,8 @@ $texto_actual = $textos[array_rand($textos)];
             <form method="POST" action="verificar.php" id="answerForm">
                 <div class="options-container">
                     <?php foreach($texto_actual["opciones"] as $i => $opc): ?>
-                    <label class="option-card" id="option-<?= $i ?>">
-                        <input type="radio" name="respuesta" value="<?= $i + 1 ?>" onchange="selectOption(<?= $i ?>)">
+                    <label class="option-card" onclick="selectOption(this)">
+                        <input type="radio" name="respuesta" value="<?= $i + 1 ?>" required>
                         <span class="option-letter"><?= chr(65 + $i) ?></span>
                         <span class="option-text"><?= $opc ?></span>
                         <span class="option-check">✓</span>
@@ -223,8 +223,8 @@ $texto_actual = $textos[array_rand($textos)];
                 <input type="hidden" name="dificultad" value="<?= $dificultad ?>">
                 <input type="hidden" name="xp_base" value="<?= $xp_max ?>">
                 
-                <button type="button" class="btn-confirm" id="confirmBtn" onclick="confirmAnswer()" disabled>
-                    <span>CONFIRMAR RESPUESTA</span>
+                <button type="submit" class="btn-submit-answer" id="submitBtn">
+                    <span>ENTREGAR RESPUESTA</span>
                     <span class="arrow">✓</span>
                 </button>
             </form>
@@ -354,20 +354,13 @@ function sumarTiempo() {
     timerEl.style.color = '#00ff9f';
 }
 
-function selectOption(index) {
-    document.querySelectorAll('.option-card').forEach((o, i) => {
-        o.classList.remove('selected');
-        if(i === index) {
-            o.classList.add('selected');
-        }
-    });
-    document.querySelectorAll('input[name="respuesta"]')[index].checked = true;
-    document.getElementById('confirmBtn').disabled = false;
+function selectOption(el) {
+    document.querySelectorAll('.option-card').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedOption = el;
     playSound('select');
-}
-
-function confirmAnswer() {
-    document.getElementById('answerForm').submit();
+    
+    document.getElementById('submitBtn').style.background = 'linear-gradient(135deg, #00ff9f, #00cc7a)';
 }
 </script>
 
@@ -738,39 +731,6 @@ function confirmAnswer() {
 
 .option-card.selected .option-check {
     opacity: 1;
-}
-
-.btn-confirm {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    background: linear-gradient(135deg, #666, #444);
-    border: none;
-    border-radius: 14px;
-    padding: 18px;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #999;
-    cursor: not-allowed;
-    transition: all 0.3s;
-}
-
-.btn-confirm:not(:disabled) {
-    background: linear-gradient(135deg, #00ff9f, #00cc7a);
-    color: #000;
-    cursor: pointer;
-}
-
-.btn-confirm:not(:disabled):hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 255, 159, 0.4);
-}
-
-.btn-confirm:disabled {
-    opacity: 0.6;
 }
 
 .btn-submit-answer {

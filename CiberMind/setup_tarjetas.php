@@ -11,22 +11,22 @@ $conn->query("CREATE TABLE IF NOT EXISTS tarjetas (
 $result = $conn->query("SELECT COUNT(*) as c FROM tarjetas");
 if($result->fetch_assoc()["c"] == 0) {
     $conn->query("INSERT INTO tarjetas (concepto, definicion, categoria) VALUES
-    ('Phishing', 'Técnica de ingeniería social para robar credenciales', 'Ataque'),
-    ('Ransomware', 'Malware que cifra archivos y exige rescate', 'Malware'),
-    ('Firewall', 'Dispositivo que filtra el tráfico de red', 'Defensa'),
-    ('VPN', 'Red privada virtual que cifra la conexión', 'Seguridad'),
-    ('Autenticación 2FA', 'Verificación en dos pasos', 'Autenticación'),
-    ('Cifrado AES', 'Estándar de cifrado simétrico de 256 bits', 'Cifrado'),
-    ('Zero-Day', 'Vulnerabilidad desconocida sin parche disponible', 'Vulnerabilidad'),
-    ('DDoS', 'Ataque distribuido de denegación de servicio', 'Ataque'),
-    ('SQL Injection', 'Inyección de código SQL malicioso', 'Ataque'),
-    ('XSS', 'Cross-Site Scripting: scripts maliciosos en web', 'Ataque'),
-    ('Antivirus', 'Software que detecta y elimina malware', 'Defensa'),
-    ('IDS/IPS', 'Sistemas de detección/prevención de intrusiones', 'Defensa'),
-    ('SIEM', 'Sistema de gestión de eventos de seguridad', 'Monitorización'),
-    ('Backup', 'Copia de seguridad de datos críticos', 'Recuperación'),
-    ('Penetration Testing', 'Evaluación de seguridad simulando ataques', 'Auditoría'),
-    ('Hash SHA-256', 'Función hash criptográfica unidireccional', 'Cifrado')
+    ('HTML', 'Lenguaje de marcado de hipertexto', 'Web'),
+    ('CSS', 'Hojas de estilo en cascada', 'Web'),
+    ('JavaScript', 'Lenguaje de programación web', 'Web'),
+    ('PHP', 'Preprocesador de hipertexto', 'Backend'),
+    ('MySQL', 'Sistema de gestión de bases de datos', 'Backend'),
+    ('API', 'Interfaz de programación de aplicaciones', 'Concepto'),
+    ('JSON', 'Notación de objetos JavaScript', 'Formato'),
+    ('Git', 'Sistema de control de versiones', 'Herramienta'),
+    ('Docker', 'Plataforma de contenedores', 'Herramienta'),
+    ('Linux', 'Sistema operativo de código abierto', 'SO'),
+    ('SQL', 'Lenguaje de consulta estructurada', 'Backend'),
+    ('HTTP', 'Protocolo de transferencia de hipertexto', 'Protocolo'),
+    ('URL', 'Localizador de recursos uniforme', 'Concepto'),
+    ('SSH', 'Shell seguro para acceso remoto', 'Protocolo'),
+    ('DNS', 'Sistema de nombres de dominio', 'Protocolo'),
+    ('AJAX', 'JavaScript asíncrono y XML', 'Tecnología')
     ");
 }
 

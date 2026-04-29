@@ -27,13 +27,16 @@ $mision_actual = $conn->query("
 ")->fetch_assoc();
 
 // Si no hay misión activa, asignar una nueva
-$completadas = $conn->query("SELECT tipo FROM misiones_diarias WHERE usuario_id = ".$_SESSION["id"]." AND fecha = '$hoy' AND completado = 1")->fetch_all(MYSQLI_ASSOC);
-$completadas_tipos = array_column($completadas, 'tipo');
-$todas_completadas = count($completadas_tipos) >= count($todas_misiones);
-
 if(!$mision_actual) {
     // Limpiar misiones antiguas
     $conn->query("DELETE FROM misiones_diarias WHERE fecha < '$hoy'");
+    
+    // Buscar una misión que no esté completada hoy
+    $completadas = $conn->query("
+        SELECT tipo FROM misiones_diarias 
+        WHERE usuario_id = ".$_SESSION["id"]." AND fecha = '$hoy' AND completado = 1
+    ")->fetch_all(MYSQLI_ASSOC);
+    $completadas_tipos = array_column($completadas, 'tipo');
     
     // Buscar misión disponible
     $disponible = null;
@@ -45,6 +48,7 @@ if(!$mision_actual) {
     }
     
     // Si todas completadas, mostrar mensaje de éxito
+    $todas_completadas = count($completadas_tipos) >= count($todas_misiones);
     
     if($disponible && !$todas_completadas) {
         $conn->query("INSERT INTO misiones_diarias (usuario_id, tipo, objetivo, progreso, recompensa, fecha) VALUES 

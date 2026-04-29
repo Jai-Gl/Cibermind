@@ -10,20 +10,7 @@ echo "<link rel='stylesheet' href='style.css'>";
 echo "<div class='grid-bg'></div>";
 echo "<div class='card'>";
 
-if(isset($_GET["tiempo"]) && $_GET["tiempo"] == 0) {
-    $racha = 0;
-    $vidas = $user["vidas"] - 1;
-    
-    echo "<h2 style='color:#ff8800'>¡TIEMPO AGOTADO! ⏰</h2>";
-    echo "<p>La secuencia estaba desordenada</p>";
-    
-    $conn->query("UPDATE usuarios SET racha=0, vidas=$vidas WHERE id=".$_SESSION["id"]);
-    
-    if($vidas <= 0) {
-        echo "<h1 style='color:red'>GAME OVER</h1>";
-        $conn->query("UPDATE usuarios SET vidas=3, nivel=1, xp=0, racha=0 WHERE id=".$_SESSION["id"]);
-    }
-} else if($correctos === 5) {
+if($correctos === 5) {
     $xp = 30;
     $nivel = $user["nivel"];
     $xp_total = $user["xp"] + $xp;
@@ -39,6 +26,10 @@ if(isset($_GET["tiempo"]) && $_GET["tiempo"] == 0) {
     
     $conn->query("UPDATE usuarios SET xp=$xp_total, nivel=$nivel, racha=$racha, ultima_fecha=NOW() WHERE id=".$_SESSION["id"]);
     
+    <script>
+    fetch('actualizar_mision.php?tipo=ordenar');
+    fetch('actualizar_mision.php?tipo=juego_total');
+    </script>
 } else {
     $racha = 0;
     $vidas = $user["vidas"] - 1;

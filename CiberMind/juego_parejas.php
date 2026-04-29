@@ -43,8 +43,8 @@ $total_pares = count($pares) / 2;
     <header class="game-header">
         <a href="menu.php" class="back-btn">←</a>
         <div class="game-title-simple">
-            <span class="game-icon-sm">🔐</span>
-            <h1>Parejas de Seguridad</h1>
+            <span class="game-icon-sm">🃏</span>
+            <h1>Parejas</h1>
         </div>
         <div class="game-stats-mini">
             <span class="mini-stat" title="Nivel">📊 <?= $user["nivel"] ?></span>
@@ -66,11 +66,11 @@ $total_pares = count($pares) / 2;
             </div>
             <div class="step">
                 <span class="step-num">2</span>
-                <span>Empareja conceptos de ciberseguridad</span>
+                <span>Busca su par (mismo concepto + definición)</span>
             </div>
             <div class="step">
                 <span class="step-num">3</span>
-                <span>Encuentra todos los <?= $total_pares ?> pares</span>
+                <span>Encuentra todos los <?= $total_pares ?> pares antes de 60s</span>
             </div>
         </div>
     </div>

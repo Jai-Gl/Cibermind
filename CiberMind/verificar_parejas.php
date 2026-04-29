@@ -34,6 +34,10 @@ if($aciertos >= 4) {
     
     $conn->query("UPDATE usuarios SET xp=$xp_total, nivel=$nivel, racha=$racha, max_racha=$max_racha, ultima_fecha=NOW(), score=score+$xp WHERE id=".$_SESSION["id"]);
     
+    <script>
+    fetch('actualizar_mision.php?tipo=parejas');
+    fetch('actualizar_mision.php?tipo=juego_total');
+    </script>
 } else {
     $racha = 0;
     $vidas = $user["vidas"] - 1;
